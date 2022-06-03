@@ -1,0 +1,218 @@
+/* A debug class, used to separate components graphically during development */
+.debug {
+    border-style:   solid;
+    margin:         3px;
+    max-width:      fit-content;
+    padding:        3px;
+}
+
+.mainContent {
+    display:        flex;
+}
+
+.hidden {
+    display:        none;
+}
+
+.textAlignRight {
+    text-align:     right;
+}
+
+.flexParent {
+    display:        flex;
+}
+
+.sidebar {
+    display:        block;
+    white-space:    nowrap;
+    border-style:   solid;
+    margin:         3px;
+    padding:        3px;
+}
+
+.tableContainer {
+    display: grid;
+    justify-items: stretch;
+    width: 400px;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "nrButton nrButton . ."
+      "removeButton dishName dishType dishPrice"
+      "totalText . . totalPrice";
+}
+
+.sidebarButton {
+    grid-area:      nrButton;
+    margin:         3px;
+}
+
+.sidebarRemoveDish {
+    grid-area:      removeButton;
+}
+
+.sidebarDishName {
+    grid-area:      dishName;
+    white-space:    normal;
+}
+
+.sidebarDishType {
+    grid-area:      dishType;
+}
+
+.sidebarDishPrice {
+    grid-area:      dishPrice;
+    text-align:     right;
+}
+
+.sidebarSumText {
+    grid-area:      totalText;
+}
+
+.sidebarSumTotal {
+    grid-area:      totalPrice;
+    text-align:     right;
+}
+
+.summary {
+    display:        block;
+    white-space:    nowrap;
+    border-style:   solid;
+    margin:         3px;
+    padding:        3px;
+    width:          fit-content;
+}
+
+.summaryName {
+    text-align:     left;
+}
+
+.summaryAisle {
+    text-align:     left;
+}
+
+.summaryQuantity {
+    text-align:     right;
+}
+
+.summaryUnit {
+    text-align:     left;
+}
+
+@media only screen and (max-width: 600px) {
+    .flexParent {
+        display:    block;
+        width:      min-content;
+    }
+
+    .summary {
+        display:        block;
+        white-space:    normal;
+        border-style:   solid;
+        margin:         3px;
+        padding:        3px;
+        width:          415px;
+    }
+}
+
+.searchForm {
+    border-style:   solid;
+    margin:         3px;
+    max-width:      fit-content;
+    padding:        3px;
+}
+
+.searchTextField {
+    margin:         3px;
+    padding:        3px;
+    width:          157px;
+}
+
+.searchButtons {
+    margin:         3px;
+    padding:        3px;
+}
+
+.searchResult {
+    text-align:     left;
+    display: inline-grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    vertical-align: top;
+    border-style:   solid;
+    border-color: black;
+    margin:         3px;
+    padding:        3px;
+}
+
+.detailsView {
+    border-style:   solid;
+    height:         min-content;
+    padding:        3px;
+    margin:         3px;
+    padding-bottom: 10px;
+}
+
+.addToMenuButton {
+    margin:         5px;
+}
+
+.detailsViewTitle {
+    font-size:      large;
+    font-weight:    bold;
+    margin:         5px;
+    padding-bottom: 5px;
+}
+
+.detailsViewImageAndPrice {
+    display:        flex;
+    height:         min-content;
+    margin:         5px;
+    margin-bottom:  10px;
+    padding:        0px;
+}
+
+.detailsViewImage {
+    margin-right:   5px;
+    padding:        0px;
+    outline:        1px solid black;
+}
+
+.detailsViewPrice {
+    margin-left:    10px;
+    padding:        5px;
+    outline:        1px solid black;
+    height:         min-content;
+    vertical-align: text-top;
+    width:          auto;
+}
+
+.detailsViewIngredients {
+    margin:         5px;
+    margin-bottom:  15px;
+    padding:        5px;
+    outline:        1px solid black;
+    height:         min-content;
+}
+
+.detailsViewIngredientName{
+    width: 80%;
+}
+
+.detailsViewIngredientAmount{
+    text-align: right;
+}
+
+.detailsViewInstructions {
+    margin:         5px;
+    margin-top:     10px;
+    margin-bottom:  10px;
+    padding:        10px;
+    outline:        1px solid black;
+    height:         min-content;
+}
+
+.detailsViewLink {
+    margin:         5px;
+    padding-left:   10px;
+    padding-bottom: 10px;
+}
