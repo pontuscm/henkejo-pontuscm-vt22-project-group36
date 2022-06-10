@@ -6,11 +6,11 @@
 */
 const PREFIX=window.location.toString().includes("react")?"reactjs":"vuejs";
 
-const Summary=require("../"+PREFIX+"/summaryPresenter.js").default;
-const Sidebar=require("../"+PREFIX+"/sidebarPresenter.js").default;
-const Search=require("../"+PREFIX+"/searchPresenter.js").default;
-const Details=require("../"+PREFIX+"/detailsPresenter.js").default;
-const Show=require("../"+PREFIX+"/show.js").default;
+const Summary=require("../vuejs/summaryPresenter.js").default;
+const Sidebar=require("../vuejs/sidebarPresenter.js").default;
+const Search=require("../vuejs/searchPresenter.js").default;
+const Details=require("../vuejs/detailsPresenter.js").default;
+const Show=require("../vuejs/show.js").default;
 
 
 export default

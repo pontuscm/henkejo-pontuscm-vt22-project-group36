@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "dh2642tw3-5d5db"
-  }
+    "default": "dh2642-group36-project",
+    "dh2642-group36-project": "dh2642-group36-project"
+  },
+  "targets": {}
 }
