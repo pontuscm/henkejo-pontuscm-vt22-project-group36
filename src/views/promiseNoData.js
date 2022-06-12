@@ -11,8 +11,9 @@ function promiseNoData(promiseState) {
     if (promiseState.promise) {
         return false
     }
+
     return <div>
-        {promiseNoData(props.model.searchPromiseState) ||
+        {promiseNoData(promiseState) || // props.model.searchPromiseState
             <span searchResults={promiseState.data}/>}
     </div>
 }
