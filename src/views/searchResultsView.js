@@ -4,16 +4,14 @@ function SearchResultsView(props) {
             props.onClickedResult(searchResult)
             window.location.hash="#details";
         }
-
         return <span onClick={onClickedResultACB} class="searchResult">
-            <img src={"https://spoonacular.com/recipeImages/"+searchResult.image} height="100"></img>
-            <div>{searchResult.title}</div>
+            <div>{searchResult.strDrink}</div>
+            <img src={searchResult.strDrinkThumb} height="100"></img>
         </span>
     }
-
     return (
         <div>
-            {props.searchResults.map(renderSearchResultCB)}
+            {props.searchResults.drinks.map(renderSearchResultCB)}
         </div>
     );
 }

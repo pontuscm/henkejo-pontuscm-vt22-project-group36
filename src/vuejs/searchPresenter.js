@@ -32,13 +32,25 @@ const Search={   // ordinary JS object literal, can have methods like render()
         }
     
         function onClickedResultACB(searchResult) {
-            component.model.setCurrentDish(searchResult.id);
+            component.model.setCurrentDish(searchResult.idDrink);
             window.location.hash="details";
         }
     
         return <div>
             <SearchFormView
-                dishTypeOptions={["starter", "main course", "dessert"]} 
+                dishTypeOptions={[
+                    "Ordinary Drink", 
+                    "Cocktail", 
+                    "Shake",
+                    "Other/Unknown",
+                    "Cocoa",
+                    "Shot",
+                    "Coffee / Tea",
+                    "Homemade Liqueur",
+                    "Punch / Party Drink",
+                    "Beer",
+                    "Soft Drink"
+                ]} 
                 onClickSearchButton={onClickSearchButtonACB} 
                 onSelectChange={onSelectChangeACB} 
                 onInputChange={onInputChangeACB}/>
