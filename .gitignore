@@ -3,6 +3,5 @@
 dist
 package-lock.json
 **/*solved*
-**/*Config.js*
 /public/*.js
 /public/*.html
