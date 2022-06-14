@@ -4,7 +4,7 @@ import "./teacherFirebase.js";
 // make webpack load the file only if it exists
 const X= TEST_PREFIX;
 
-const DinnerModel=require("/src/"+X+"DinnerModel.js").default;
+const DrinksModel=require("/src/"+X+"DrinksModel.js").default;
 const App=require("/src/views/"+X+"app.js").default;
 
 let firebaseModel;
@@ -22,7 +22,7 @@ try{
 if(firebaseModel && firebaseModel.updateFirebaseFromModel){
     const {updateFirebaseFromModel, updateModelFromFirebase}=firebaseModel;
     function ReactRoot(){
-        const [model, setModel]= React.useState(new DinnerModel());
+        const [model, setModel]= React.useState(new DrinksModel());
 
         React.useEffect(function onStartACB(){
             updateFirebaseFromModel(model);

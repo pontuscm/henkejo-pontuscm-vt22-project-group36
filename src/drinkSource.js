@@ -9,12 +9,10 @@ function treatHTTPResponseACB(response){
 }
 
 function transformResultACB(response) {
-    //console.log(response);
     return response;
 }
 
-function getDishDetails(params) {
-    console.log(BASE_URL+"lookup.php?i="+params);
+function getDrinkDetails(params) {
     return fetch(
         BASE_URL+"lookup.php?i="+params, 
         {
@@ -24,9 +22,8 @@ function getDishDetails(params) {
     ).then(treatHTTPResponseACB);
 }
 
-function searchDishes(params) {
+function searchDrinks(params) {
     let searchParams = new URLSearchParams(params);
-    console.log(BASE_URL+"search.php?s="+searchParams.get("query").toString());
     return fetch(
         BASE_URL+"search.php?s="+searchParams.get("query").toString(), 
         {
@@ -36,4 +33,4 @@ function searchDishes(params) {
     ).then(treatHTTPResponseACB).then(transformResultACB);
 }
 
-export {searchDishes,getDishDetails};
+export {searchDrinks, getDrinkDetails};

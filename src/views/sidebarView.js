@@ -1,4 +1,4 @@
-import { dishType, sortDishes } from "../utilities";
+import { drinkType, sortDrinks } from "../utilities";
 import { menuPrice } from "../utilities";
 
 function SidebarView(props){
@@ -10,24 +10,23 @@ function SidebarView(props){
         props.onNumberChange(props.number + 1)
     }
 
-    function dishesTableRowCB(dish){
-        function removeDishACB(event){
-            props.onRemoveDish(dish)
+    function drinksTableRowCB(drink){
+        function removeDrinkACB(event){
+            props.onRemoveDrink(drink)
         }
 
-        function selectCurrentDishACB(event){
-            props.onSelectCurrentDish(dish)
+        function selectCurrentDrinkACB(event){
+            props.onSelectCurrentDrink(drink)
         }
 
-        return <tr key={dish.id}>
-            <td class="sidebarRemoveDish"><button onClick={removeDishACB}>x</button></td>
-            <td class="sidebarDishName"><a href="#details" onClick={selectCurrentDishACB}>{dish.title}</a></td>
-            <td class="sidebarDishType">{dishType(dish)}</td>
-            <td class="sidebarDishPrice">{(dish.pricePerServing * props.number).toFixed(2)}</td></tr>
+        return <tr key={drink.idDrink}>
+            <td class="sidebarRemoveDrink"><button onClick={removeDrinkACB}>x</button></td>
+            <td class="sidebarDrinkName"><a href="#details" onClick={selectCurrentDrinkACB}>{drink.strDrink}</a></td>
+            <td class="sidebarDrinkType">{drink.strCategory}</td>
+            {/* <td class="sidebarDrinkPrice">{(drink.pricePerServing * props.number).toFixed(2)}</td> */}
+            </tr>
     }
 
-
-    
     return (
         <div class="sidebar">
             <button class="sidebarButton" disabled={props.number < 2} onClick={minusButtonACB}>
@@ -37,17 +36,18 @@ function SidebarView(props){
             <button class="sidebarButton" onClick={plusButtonACB}>
                 +
             </button>
+            
             <table class="tableContainer">
                 <tbody>
                     {
-                        sortDishes(props.dishes).map(dishesTableRowCB)
+                        sortDrinks(props.drinkFavorites).map(drinksTableRowCB)
                     }
-                    <tr>
+                    {/* <tr>
                         <td class="sidebarSumText">Total: </td>
                         <td></td>
                         <td></td>
-                        <td class="sideBarSumTotal">{(menuPrice(props.dishes) * props.number).toFixed(2)}</td>
-                    </tr>
+                        <td class="sideBarSumTotal">{(menuPrice(props.drinkFavorites) * props.number).toFixed(2)}</td>
+                    </tr> */}
                 </tbody>
             </table>
         </div>

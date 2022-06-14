@@ -4,7 +4,7 @@ import render from "./teacherRender.js";
 // make webpack load the file only if it exists
 const X= TEST_PREFIX;
 
-const DinnerModel=require("/src/"+X+"DinnerModel.js").default;
+const DrinksModel=require("/src/"+X+"DrinksModel.js").default;
 
 let Details;
 try{
@@ -22,7 +22,7 @@ if(Details){
     
     const VueRoot={
         data(){
-        return {rootModel: new DinnerModel()} ;
+        return {rootModel: new DrinksModel()} ;
         } ,
         render(){
             return <Details model={this.rootModel} />;

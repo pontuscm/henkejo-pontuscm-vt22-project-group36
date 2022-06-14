@@ -1,7 +1,7 @@
 import { firebaseModelPromise, updateFirebaseFromModel, updateModelFromFirebase } from "../firebaseModel";
 import resolvePromise from "../resolvePromise";
 import promiseNoData from "../views/promiseNoData";
-import DinnerModel from "/src/DinnerModel.js";
+import DrinksModel from "/src/DrinksModel.js";
 import App from "/src/views/app.js";
 
 let proxyModel;

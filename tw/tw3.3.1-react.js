@@ -3,7 +3,7 @@ import render from "./teacherRender.js";
 // make webpack load the file only if it exists
 const X= TEST_PREFIX;
 
-const DinnerModel=require("/src/"+TEST_PREFIX+"DinnerModel.js").default;
+const DrinksModel=require("/src/"+TEST_PREFIX+"DrinksModel.js").default;
 
 const App=require("/src/views/"+TEST_PREFIX+"app.js").default;
 
@@ -18,7 +18,7 @@ try{
            </div>,  document.getElementById('root'));
 }
 if(navigation){
-    const model= new DinnerModel();
+    const model= new DrinksModel();
     model.addObserver(console.log);
     window.myModel=model;
     render(

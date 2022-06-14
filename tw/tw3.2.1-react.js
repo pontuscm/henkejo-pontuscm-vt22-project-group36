@@ -3,7 +3,7 @@ import render from "./teacherRender.js";
 // make webpack load the file only if it exists
 const X= TEST_PREFIX;
 
-const DinnerModel=require("/src/"+TEST_PREFIX+"DinnerModel.js").default;
+const DrinksModel=require("/src/"+TEST_PREFIX+"DrinksModel.js").default;
 
 let Search;
 try{
@@ -14,7 +14,7 @@ try{
            </div>,  document.getElementById('root'));
 }
 if(Search){
-    const model= new DinnerModel();
+    const model= new DrinksModel();
 
     function myObserverACB(){
         console.log(model);

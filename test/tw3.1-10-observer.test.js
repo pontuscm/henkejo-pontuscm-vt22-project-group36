@@ -1,21 +1,21 @@
 import { expect } from "chai";
 
-describe("TW3.1 DinnerModel as Observable", function tw3_1_10() {
+describe("TW3.1 DrinksModel as Observable", function tw3_1_10() {
   this.timeout(200000);
 
     let model;
     this.beforeEach(function tw3_1_10_before(){
-        const DinnerModel= require('../src/'+TEST_PREFIX+'DinnerModel.js').default;     
-        model = new DinnerModel();
+        const DrinksModel= require('../src/'+TEST_PREFIX+'DrinksModel.js').default;     
+        model = new DrinksModel();
     });
   it("observers array is initialized correctly", function tw3_1_10_1() {
-      const DinnerModel= require('../src/'+TEST_PREFIX+'DinnerModel.js').default;
+      const DrinksModel= require('../src/'+TEST_PREFIX+'DrinksModel.js').default;
       try {
-          new DinnerModel();
+          new DrinksModel();
     } catch(e) {
-      expect(false, "DinnerModel constructor throws an error. Double check that observer is initialized correctly.").to.equal(true);
+      expect(false, "DrinksModel constructor throws an error. Double check that observer is initialized correctly.").to.equal(true);
     }
-    model = new DinnerModel();
+    model = new DrinksModel();
     expect(model.observers, "expected model.observers property to be initialized immediately").to.be.ok;
     expect(model.observers, "expect model.observers to be array").to.be.an("array");
   });

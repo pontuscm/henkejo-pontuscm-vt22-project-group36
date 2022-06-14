@@ -4,21 +4,21 @@ import DetailsView from "../views/detailsView.js";
 function Details(props) {
 
     function addToMenuACB() {
-        props.model.addToMenu(props.model.currentDishPromiseState.data.drinks[0])
+        props.model.addToMenu(props.model.currentDrinkPromiseState.data.drinks[0])
     }
 
-    function filterOutDishCB(drink) {
-        return drink.idDrink === props.model.currentDishPromiseState.data.drinks[0].idDrink
+    function filterOutDrinkCB(drink) {
+        return drink.idDrink === props.model.currentDrinkPromiseState.data.drinks[0].idDrink
     }
 
-    function isDishInMenuCB() {
-        return props.model.drinkFavorites.find(filterOutDishCB) !== undefined
+    function isDrinkInMenuCB() {
+        return props.model.drinkFavorites.find(filterOutDrinkCB) !== undefined
     }
 
-    return promiseNoData(props.model.currentDishPromiseState) || 
+    return promiseNoData(props.model.currentDrinkPromiseState) || 
     <DetailsView 
-        dishData={props.model.currentDishPromiseState.data} 
-        isDishInMenu={isDishInMenuCB()} 
+        drinkData={props.model.currentDrinkPromiseState.data} 
+        isDrinkInMenu={isDrinkInMenuCB()} 
         guests={props.model.numberOfGuests} 
         onAddToMenu={addToMenuACB}
     />;

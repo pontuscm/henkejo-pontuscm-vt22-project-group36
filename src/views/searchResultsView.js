@@ -6,7 +6,7 @@ function SearchResultsView(props) {
         }
         return <span onClick={onClickedResultACB} class="searchResult">
             <div>{searchResult.strDrink}</div>
-            <img src={searchResult.strDrinkThumb} height="100"></img>
+            <img src={searchResult.strDrinkThumb + "/preview"} height="100"></img>
         </span>
     }
     return (

@@ -3,14 +3,14 @@ import dishesConst from './dishesConst.js';
 
 function getDishDetails(x){ return dishesConst.find(function(d){ return d.id===x;});}
 
-describe("TW1.1 DinnerModel", function tw1_1_05() {
+describe("TW1.1 DrinksModel", function tw1_1_05() {
     this.parent.setMaxListeners(200); // prevent EventEmitter "too many listeners" warning
     this.timeout(200000);  // increase to allow debugging during the test run
     let model;
     
     beforeEach(function  tw1_1_05_beforeEach() {
-        const DinnerModel= require('../src/'+TEST_PREFIX+'DinnerModel.js').default;
-        model = new DinnerModel();
+        const DrinksModel= require('../src/'+TEST_PREFIX+'DrinksModel.js').default;
+        model = new DrinksModel();
     });
     
     it("number of guests can only be set to a positive integer", function  tw1_1_05_1(){

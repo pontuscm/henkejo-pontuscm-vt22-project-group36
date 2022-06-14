@@ -1,14 +1,14 @@
 import { expect } from "chai";
 
-describe("TW3.1 DinnerModel notifies its observers", function tw3_1_20() {
+describe("TW3.1 DrinksModel notifies its observers", function tw3_1_20() {
   this.timeout(200000);
 
   let model;
   let observer = false;
   let payload = {};
   this.beforeEach(function tw3_1_20_beforeEach() {
-      const DinnerModel= require('../src/'+TEST_PREFIX+'DinnerModel.js').default;
-      model = new DinnerModel();
+      const DrinksModel= require('../src/'+TEST_PREFIX+'DrinksModel.js').default;
+      model = new DrinksModel();
       model.addObserver(function tw3_1_20_observer(arg){
           observer = !observer;
           if(arg)

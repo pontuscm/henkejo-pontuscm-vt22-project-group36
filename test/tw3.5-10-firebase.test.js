@@ -18,9 +18,9 @@ describe("TW3.5 Firebase-model", function tw3_5_10() {
         if (!firebaseModel) this.skip();
     });
     it("model saved to firebase", async function tw3_5_10_1() {
-        const DinnerModel= require('../src/'+TEST_PREFIX+'DinnerModel.js').default;
+        const DrinksModel= require('../src/'+TEST_PREFIX+'DrinksModel.js').default;
         window.firebase.firebaseData={};        
-        const model= new DinnerModel();
+        const model= new DrinksModel();
         
         firebaseModel.updateFirebaseFromModel(model);
 
@@ -154,7 +154,7 @@ describe("TW3.5 Firebase-model", function tw3_5_10() {
         }
         finally{ window.fetch=oldFetch; }
         expect(model, "promise should resolve to a model").to.be.ok;
-        expect(model.constructor.name, "promise should resolve to a model").to.equal("DinnerModel");
+        expect(model.constructor.name, "promise should resolve to a model").to.equal("DrinksModel");
         expect(window.firebase.firebaseRoot, "once should be attached on the firebase model root path").to.equal(root.slice(0,-1));
         expect(model.numberOfGuests, "initial model should read number of guests from firebase").to.equal(7);
         expect(model.dishes, "initial model should read dishes from firebase").to.be.ok;
@@ -176,7 +176,7 @@ describe("TW3.5 Firebase-model", function tw3_5_10() {
         }
         finally{ window.fetch=oldFetch; }
         expect(model, "promise should resolve to a model").to.be.ok;
-        expect(model.constructor.name, "promise should resolve to a model").to.equal("DinnerModel");
+        expect(model.constructor.name, "promise should resolve to a model").to.equal("DrinksModel");
         expect(window.firebase.firebaseRoot, "once should be attached on the firebase model root path").to.equal(root.slice(0,-1));
         expect(model.numberOfGuests, "initial model should have 2 guests on empty firebase database").to.equal(2);
         expect(model.dishes, "initial model should have empty dishes on empty firebase database").to.be.ok;
@@ -192,7 +192,7 @@ describe("TW3.5 Firebase-model", function tw3_5_10() {
         }
         finally{ window.fetch=oldFetch; }
         expect(model, "promise should resolve to a model").to.be.ok;
-        expect(model.constructor.name, "promise should resolve to a model").to.equal("DinnerModel");
+        expect(model.constructor.name, "promise should resolve to a model").to.equal("DrinksModel");
         expect(window.firebase.firebaseRoot, "once should be attached on the firebase model root path").to.equal(root.slice(0,-1));
         expect(model.numberOfGuests, "initial model should have 2 guests on empty firebase database").to.equal(2);
         expect(model.dishes, "initial model should have empty dishes on empty firebase database").to.be.ok;

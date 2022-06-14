@@ -1,10 +1,10 @@
-import DinnerModel from "/src/DinnerModel.js";
+import DrinksModel from "/src/DrinksModel.js";
 import App from "/src/views/app.js";
 
 let proxyModel;
 const VueRoot={
     data(){
-        return {rootModel: new DinnerModel()} ;
+        return {rootModel: new DrinksModel()} ;
     } ,
     render(){
         return <App model={this.rootModel} />;

@@ -7,8 +7,8 @@ describe("TW2.4 Current dish Promise State", function tw_2_4_20() {
 
   let model;
   this.beforeEach(function tw_2_4_20_beforeEach() {
-      const DinnerModel = require("../src/" + X + "DinnerModel.js").default;
-      model = new DinnerModel();
+      const DrinksModel = require("../src/" + X + "DrinksModel.js").default;
+      model = new DrinksModel();
   });
   it("Model initializes currentDishPromiseState correctly", function tw_2_4_20_1() {
     expect(

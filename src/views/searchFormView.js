@@ -1,6 +1,6 @@
 function SearchFormView(props) {
-    function dishTypeOptionsCB(dishOption) {
-        return <option value={dishOption}>{dishOption}</option>
+    function drinkTypeOptionsCB(drinkOption) {
+        return <option value={drinkOption}>{drinkOption}</option>
     }
 
     function onInputChangeACB(event) {
@@ -22,9 +22,9 @@ function SearchFormView(props) {
     return (
         <div class="searchForm">
             <input type="text" placeholder="Search..." class="searchTextField" onChange={onInputChangeACB}></input>
-            <select class="searchButtons" name="dishTypesOptions" onChange={onSelectChangeACB}>
+            <select class="searchButtons" name="drinkTypesOptions" onChange={onSelectChangeACB}>
                 <option value="">Choose:</option>
-                {props.dishTypeOptions.map(dishTypeOptionsCB)}
+                {props.drinkTypeOptions.map(drinkTypeOptionsCB)}
             </select>
             <button class="searchButtons" onClick={onClickSearchButtonACB}>Search!</button>
             <button class="searchButtons" onClick={onClickSummaryButtonACB}>Summary</button>

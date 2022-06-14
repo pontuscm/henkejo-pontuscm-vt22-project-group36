@@ -4,20 +4,20 @@ import render from "./teacherRender.js";
 // make webpack load the file only if it exists
 const X= TEST_PREFIX;
 
-const DinnerModel=require("/src/"+X+"DinnerModel.js").default;
+const DrinksModel=require("/src/"+X+"DrinksModel.js").default;
 const searchDishes=require("/src/"+X+"dishSource.js").searchDishes;
 try{
-    if(!DinnerModel.prototype.doSearch) throw "not defined";
+    if(!DrinksModel.prototype.doSearch) throw "not defined";
 }catch(e){
     render(<div>
-             Please write DinnerModel.doSearch()
+             Please write DrinksModel.doSearch()
            </div>,  document.getElementById('root'));
 }
 
-if(DinnerModel.prototype.doSearch){
+if(DrinksModel.prototype.doSearch){
     const VueRoot={
         data(){
-            return {rootModel: new DinnerModel()} ;
+            return {rootModel: new DrinksModel()} ;
         } ,
         render(){
             if(!this.rootModel.searchResultsPromiseState.promise){

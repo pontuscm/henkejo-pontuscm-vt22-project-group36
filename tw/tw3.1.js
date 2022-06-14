@@ -6,9 +6,9 @@ const X= TEST_PREFIX;
 render(<div>call myModel methods at the Console to see the payload!</div>,
        document.getElementById("root"));
 
-const DinnerModel=require("/src/"+X+"DinnerModel.js").default;
+const DrinksModel=require("/src/"+X+"DrinksModel.js").default;
 
-const model= new DinnerModel();
+const model= new DrinksModel();
 
 function myObserverACB(payload){
     console.log(payload);

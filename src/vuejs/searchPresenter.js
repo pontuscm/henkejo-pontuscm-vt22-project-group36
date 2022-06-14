@@ -2,9 +2,9 @@ import SearchFormView from "../views/searchFormView";
 import SearchResultsView from "../views/searchResultsView";
 import promiseNoData from "../views/promiseNoData.js";
 import resolvePromise from "../resolvePromise";
-import { searchDishes } from "../dishSource";
+import { searchDrinks } from "../drinkSource";
 
-const Search={   // ordinary JS object literal, can have methods like render()
+const Search={
     props: ["model"],
     data(){ return { 
         searchType:"", 
@@ -14,12 +14,12 @@ const Search={   // ordinary JS object literal, can have methods like render()
     },
     created(){
         const component=this; 
-        lifecycle: resolvePromise(searchDishes({type: component.searchType, query: component.searchQuery}), component.searchResultsPromiseState);
+        lifecycle: resolvePromise(searchDrinks({type: component.searchType, query: component.searchQuery}), component.searchResultsPromiseState);
     },
     render(){
         const component=this;
         function onClickSearchButtonACB() {
-            resolvePromise(searchDishes({type: component.searchType, query: component.searchQuery}), component.searchResultsPromiseState);
+            resolvePromise(searchDrinks({type: component.searchType, query: component.searchQuery}), component.searchResultsPromiseState);
             window.location.hash="search";
         }
     
@@ -32,13 +32,13 @@ const Search={   // ordinary JS object literal, can have methods like render()
         }
     
         function onClickedResultACB(searchResult) {
-            component.model.setCurrentDish(searchResult.idDrink);
+            component.model.setCurrentDrink(searchResult.idDrink);
             window.location.hash="details";
         }
     
         return <div>
             <SearchFormView
-                dishTypeOptions={[
+                drinkTypeOptions={[
                     "Ordinary Drink", 
                     "Cocktail", 
                     "Shake",

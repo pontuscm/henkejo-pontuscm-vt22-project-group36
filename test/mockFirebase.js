@@ -33,9 +33,9 @@ window.firebase={
 
 async function findKeys(){
     window.firebase.firebaseData={};
-    const DinnerModel= require('../src/'+TEST_PREFIX+'DinnerModel.js').default;
+    const DrinksModel= require('../src/'+TEST_PREFIX+'DrinksModel.js').default;
 
-    const model= new DinnerModel();
+    const model= new DrinksModel();
     require('../src/'+TEST_PREFIX+'firebaseModel.js').updateFirebaseFromModel(model);
     model.setNumberOfGuests(3);
     const numberKey= Object.keys(window.firebase.firebaseData)[0];

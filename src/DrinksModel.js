@@ -1,14 +1,14 @@
-import { getDishDetails, searchDishes } from "./dishSource";
+import { getDrinkDetails, searchDrinks } from "./drinkSource";
 import resolvePromise from "./resolvePromise";
 
-class DinnerModel {
-    constructor(nrGuests = 2, drinkArray = [], currentDish, searchResultsPromiseState = {}, searchParams = {}) {
+class DrinksModel {
+    constructor(nrGuests = 2, drinkArray = [], currentDrink, searchResultsPromiseState = {}, searchParams = {}) {
         this.observers = [];
         this.setNumberOfGuests(nrGuests);
         this.drinkFavorites = drinkArray;
         this.searchResultsPromiseState = {};
         this.searchParams = {};
-        this.currentDishPromiseState = {};
+        this.currentDrinkPromiseState = {};
     }
 
     removeObserver(observerACB) {
@@ -47,7 +47,7 @@ class DinnerModel {
     }
 
     doSearch(searchParams) {
-        resolvePromise(searchDishes(searchParams), this.searchResultsPromiseState, this.notifyObservers.bind(this));
+        resolvePromise(searchDrinks(searchParams), this.searchResultsPromiseState, this.notifyObservers.bind(this));
     }
 
     setNumberOfGuests(nr) {
@@ -63,13 +63,13 @@ class DinnerModel {
 
     addToMenu(drinkToAdd) {
         const thisComponent = this;
-        function compareDishes(drink) {
+        function compareDrinks(drink) {
             if (drink.idDrink == drinkToAdd.idDrink) {
                 return true;
             }
             return false;
         }
-        if (this.drinkFavorites.find(compareDishes) == undefined) {
+        if (this.drinkFavorites.find(compareDrinks) == undefined) {
             this.drinkFavorites = [...this.drinkFavorites, drinkToAdd];
             thisComponent.notifyObservers({addDrink: drinkToAdd});
         }
@@ -89,17 +89,17 @@ class DinnerModel {
         this.drinkFavorites = this.drinkFavorites.filter(hasSameIdCB);
     }
 
-    setCurrentDish(id) {
+    setCurrentDrink(id) {
         const theModel = this;
         function notifyACB(){
             theModel.notifyObservers();
         }
-        if (id !== null && id !== this.currentDish) {
-            resolvePromise(getDishDetails(id), this.currentDishPromiseState, notifyACB)
-            this.currentDish = id;
-            this.notifyObservers({setCurrentDishId: id});
+        if (id !== null && id !== this.currentDrink) {
+            resolvePromise(getDrinkDetails(id), this.currentDrinkPromiseState, notifyACB)
+            this.currentDrink = id;
+            this.notifyObservers({setCurrentDrinkId: id});
         }
     }
 }
 
-export default DinnerModel;
+export default DrinksModel;

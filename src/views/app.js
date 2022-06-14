@@ -16,7 +16,6 @@ const Show=require("../vuejs/show.js").default;
 export default
 function App(props){
     return (<div class="flexParent">
-                {/* TODO TW1.2 Sidebar will be added here, inside a DIV, like Summary below */}
                 <div class="sidebar"><Sidebar model={props.model}/></div>
                 <Show hash="#search"><Search model={props.model}/></Show>
                 <Show hash="#details"><Details model={props.model}/></Show>

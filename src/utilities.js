@@ -12,20 +12,20 @@ const knownTypes=[
     "Soft Drink"
 ];
 
-function compareDishTypeCB(dishA, dishB){
-    if (knownTypes.indexOf(dishA.strCategory) < knownTypes.indexOf(dishB.strCategory)) {
+function compareDrinkTypeCB(drinkA, drinkB){
+    if (knownTypes.indexOf(drinkA.strCategory) < knownTypes.indexOf(drinkB.strCategory)) {
         return -1
     }
-    else if (knownTypes.indexOf(dishA.strCategory) > knownTypes.indexOf(dishB.strCategory)) {
+    else if (knownTypes.indexOf(drinkA.strCategory) > knownTypes.indexOf(drinkB.strCategory)) {
         return 1
     } else {
         return 0
     }
 }
 
-function sortDishes(drinkFavorites){
+function sortDrinks(drinkFavorites){
     const sortedDrinkFavorites = [...drinkFavorites]
-    return sortedDrinkFavorites.sort(compareDishTypeCB)
+    return sortedDrinkFavorites.sort(compareDrinkTypeCB)
 }
 
 /* 
@@ -64,5 +64,5 @@ function menuPrice(drinksArray){
     return 666;
 }
 
-export {sortDishes, sortIngredients, shoppingList, menuPrice};
+export {sortDrinks, sortIngredients, shoppingList, menuPrice};
 

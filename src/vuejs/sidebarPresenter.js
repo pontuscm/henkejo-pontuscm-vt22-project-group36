@@ -1,18 +1,23 @@
 import SidebarView from "../views/sidebarView.js";
 
 export default
-function Sidebar(props){
+    function Sidebar(props) {
     function numberChangeACB(nr) {
         props.model.setNumberOfGuests(nr)
     }
 
-    function removeDishACB(dish){
-        props.model.removeFromMenu(dish)
+    function removeDrinkACB(drink) {
+        props.model.removeFromMenu(drink)
     }
 
-    function selectCurrentDishACB(dish){
-        props.model.setCurrentDish(dish.id)
+    function selectCurrentDrinkACB(drink) {
+        props.model.setCurrentDrink(drink.idDrink)
     }
 
-    return <SidebarView number={props.model.numberOfGuests} onNumberChange={numberChangeACB} dishes={props.model.dishes} onRemoveDish={removeDishACB} onSelectCurrentDish={selectCurrentDishACB}/>;
+    return <SidebarView
+        number={props.model.numberOfGuests}
+        onNumberChange={numberChangeACB}
+        drinkFavorites={props.model.drinkFavorites}
+        onRemoveDrink={removeDrinkACB}
+        onSelectCurrentDrink={selectCurrentDrinkACB} />;
 }
