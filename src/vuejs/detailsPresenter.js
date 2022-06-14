@@ -4,15 +4,15 @@ import DetailsView from "../views/detailsView.js";
 function Details(props) {
 
     function addToMenuACB() {
-        props.model.addToMenu(props.model.currentDishPromiseState.data)
+        props.model.addToMenu(props.model.currentDishPromiseState.data.drinks[0])
     }
 
-    function filterOutDishCB(dish) {
-        return dish.id === props.model.currentDishPromiseState.data.id
+    function filterOutDishCB(drink) {
+        return drink.idDrink === props.model.currentDishPromiseState.data.drinks[0].idDrink
     }
 
     function isDishInMenuCB() {
-        return props.model.dishes.find(filterOutDishCB) !== undefined
+        return props.model.drinkFavorites.find(filterOutDishCB) !== undefined
     }
 
     return promiseNoData(props.model.currentDishPromiseState) || 

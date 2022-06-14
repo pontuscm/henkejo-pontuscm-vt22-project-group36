@@ -3,7 +3,7 @@ function DetailsView(props) {
     function renderImageAndPriceCB(props) {
         return <div class="detailsViewImageAndPrice">
             <span>
-                <img class="detailsViewImage" src={props.dishData.drinks[0].strDrinkThumb} height="100"></img>
+                <img class="detailsViewImage" src={props.dishData.drinks[0].strDrinkThumb + "/preview"}></img>
             </span>
         </div>
     }
