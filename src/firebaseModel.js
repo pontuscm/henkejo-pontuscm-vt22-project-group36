@@ -7,6 +7,8 @@ firebase.initializeApp(firebaseConfig);
 const REF = "dinnerModel10";
 
 function updateFirebaseFromModel(model) {
+    console.log("updateFirebaseFromModel");
+    console.log(model);
     function myObserverACB(payload) {
         if (payload != undefined) {
             if (payload.setNumOfGuests) {
@@ -20,11 +22,11 @@ function updateFirebaseFromModel(model) {
             if (payload.setCurrentDishId) {
                 firebase.database().ref(REF + "/currentDishId/").set(payload.setCurrentDishId);
             }
-            if (payload.addDish) {
-                firebase.database().ref(REF + "/dishes/" + String(payload.addDish.id)).set(payload.addDish.title);
+            if (payload.addDrink) {
+                firebase.database().ref(REF + "/drinkFavorites/" + String(payload.addDrink.idDrink)).set(payload.addDrink.strDrink);
             }
-            if (payload.removeDish) {
-                firebase.database().ref(REF + "/dishes/" + String(payload.removeDish.id)).set(null);
+            if (payload.removeDrink) {
+                firebase.database().ref(REF + "/drinkFavorites/" + String(payload.removeDrink.idDrink)).set(null);
             }
         }
     }
@@ -32,6 +34,8 @@ function updateFirebaseFromModel(model) {
 }
 
 function updateModelFromFirebase(model) {
+    console.log("updateModelFromFirebase");
+    console.log(model);
     firebase.database().ref(REF + "/numberOfGuests").on("value",
         function numberOfGuestsChangedInFirebaseACB(firebaseData) {
             if (+firebaseData.val() > 0 && Number.isInteger(+firebaseData.val())) {
@@ -48,10 +52,10 @@ function updateModelFromFirebase(model) {
         }
     );
 
-    firebase.database().ref(REF + "/dishes").on("child_added",
+    firebase.database().ref(REF + "/drinkFavorites").on("child_added",
         function dishAddedFromMenuInFirebaseACB(firebaseData) {
-            function compareDishes(dish) {
-                if (dish.id == +firebaseData.key) {
+            function compareDishes(drink) {
+                if (+drink.idDrink == +firebaseData.key) {
                     return true;
                 }
                 return false;
@@ -59,10 +63,10 @@ function updateModelFromFirebase(model) {
             function fetchDishDataBasedOnID(key) {
                 return getDishDetails(key);
             }
-            if (model.dishes.find(compareDishes) == undefined) {
+            if (model.drinkFavorites.find(compareDishes) == undefined) {
                 fetchDishDataBasedOnID(+firebaseData.key).then(
-                    function addDishToModelACB(dish) {
-                        model.addToMenu(dish);
+                    function addDrinkToModelACB(drinkData) {
+                        model.addToMenu(drinkData.drinks[0]);
                     }
                 ).catch(
                     function processErrorACB(err) {
@@ -72,7 +76,7 @@ function updateModelFromFirebase(model) {
             }
         }
     );
-    firebase.database().ref(REF + "/dishes").on("child_removed",
+    firebase.database().ref(REF + "/drinkFavorites").on("child_removed",
         function dishRemovedFromMenuInFirebaseACB(firebaseData) {
             model.removeFromMenu({ id: +firebaseData.key });
         }
@@ -81,17 +85,17 @@ function updateModelFromFirebase(model) {
 
 function firebaseModelPromise() {
     function getAllDishesFromFirebasePromiseACB(firebaseData) {
-        function createModelACB(dishesArray) {
-            return new DinnerModel(+firebaseData.val().numberOfGuests, dishesArray)
+        function createModelACB(drinksArray) {
+            return new DinnerModel(+firebaseData.val().numberOfGuests, drinksArray)
         }
-        function makeDishPromiseCB(dishId) {
-            return getDishDetails(dishId);
+        function makeDishPromiseCB(drinkId) {
+            return getDishDetails(drinkId);
         }
-        if (firebaseData.val() == undefined || firebaseData.val().dishes == undefined) {
+        if (firebaseData.val() == undefined || firebaseData.val().drinkFavorites == undefined) {
             return new DinnerModel();
         }
-        const allDishesPromiseArray = Object.keys(firebaseData.val().dishes).map(makeDishPromiseCB);
-        return Promise.all(allDishesPromiseArray).then(createModelACB);
+        const allDrinksPromiseArray = Object.keys(firebaseData.val().drinkFavorites).map(makeDishPromiseCB);
+        return Promise.all(allDrinksPromiseArray).then(createModelACB);
     }
     return firebase.database().ref(REF).once("value").then(getAllDishesFromFirebasePromiseACB);
 }
