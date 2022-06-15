@@ -10,9 +10,8 @@ function DetailsView(props) {
 
     function renderIngredientsCB(ingredient) {
         return <tr>
-            <td class="detailsViewIngredientName">{ingredient.name}</td>
-            <td class="detailsViewIngredientAmount">{ingredient.amount.toFixed(2)}</td>
-            <td>{ingredient.unit}</td>
+            <td class="detailsViewIngredientName">{ingredient[0]}</td>
+            <td class="detailsViewIngredientAmount">{ingredient[1]}</td>
         </tr>
     }
 
@@ -24,7 +23,29 @@ function DetailsView(props) {
     function onCancelButtonClickACB(event) {
         window.location.hash = "#search";
     }
-
+    let ingredient_names = [];
+    let ingredient_amounts = [];
+    for (let [key, value] of Object.entries(props.drinkData.drinks[0])) {
+        if (key.startsWith("strIngredient") && value != null) {
+            ingredient_names[key[13] - 1] = value;
+            //console.log(value);
+        }
+        if (key.startsWith("strMeasure") && value != null) {
+            ingredient_amounts[key[10] - 1] = value;
+            //console.log(value);
+        }
+    }
+    const ingredients_list = {};
+    ingredient_names.forEach((element, index) => {
+        if (ingredient_amounts[index] == null) {
+            ingredients_list[element] = "n/a";
+        }
+        else {
+            ingredients_list[element] = ingredient_amounts[index];
+        }
+    });
+    console.log(props.drinkData.drinks[0]);
+    console.log(ingredients_list);
     return (
         <div class="detailsView">
             <button class="addToMenuButton" disabled={props.isDrinkInMenu} onClick={addToMenuACB}>Add to menu!</button>
@@ -32,11 +53,9 @@ function DetailsView(props) {
             <div class="detailsViewTitle">{props.drinkData.drinks[0].strDrink}</div>
             {renderImageAndPriceCB(props)}
             <div class="detailsViewIngredients">
-                <div>Place for ingredients list, only first added as example:</div>
-                <tr>
-                    <td class="detailsViewIngredientName">{props.drinkData.drinks[0].strIngredient1}</td>
-                    <td class="detailsViewIngredientAmount">{props.drinkData.drinks[0].strMeasure1}</td>
-                </tr>
+                <table>
+                    {Object.entries(ingredients_list).map(renderIngredientsCB)}
+                </table>
             </div>
             <div class="detailsViewInstructions">{props.drinkData.drinks[0].strInstructions}</div>
         </div>
