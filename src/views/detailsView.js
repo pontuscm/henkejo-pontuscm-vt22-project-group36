@@ -44,20 +44,42 @@ function DetailsView(props) {
             ingredients_list[element] = ingredient_amounts[index];
         }
     });
-    console.log(props.drinkData.drinks[0]);
-    console.log(ingredients_list);
+
     return (
         <div class="detailsView">
             <button class="addToMenuButton" disabled={props.isDrinkInMenu} onClick={addToMenuACB}>Add to menu!</button>
             <button onClick={onCancelButtonClickACB}>Cancel</button>
             <div class="detailsViewTitle">{props.drinkData.drinks[0].strDrink}</div>
             {renderImageAndPriceCB(props)}
+            <div class="detailsViewInstructions">
+                {props.drinkData.drinks[0].strAlcoholic}
+            </div>
             <div class="detailsViewIngredients">
+                <div>
+                    Ingredients:
+                </div>
                 <table>
                     {Object.entries(ingredients_list).map(renderIngredientsCB)}
                 </table>
             </div>
-            <div class="detailsViewInstructions">{props.drinkData.drinks[0].strInstructions}</div>
+            <div class="detailsViewInstructions">
+                <div>
+                    Category:
+                </div>
+                {props.drinkData.drinks[0].strCategory}
+            </div>
+            <div class="detailsViewInstructions">
+                <div>
+                    Glass type:
+                </div>
+                {props.drinkData.drinks[0].strGlass}
+            </div>
+            <div class="detailsViewInstructions">
+                <div>
+                    Instructions:
+                </div>
+                {props.drinkData.drinks[0].strInstructions}
+            </div>
         </div>
     )
 }
