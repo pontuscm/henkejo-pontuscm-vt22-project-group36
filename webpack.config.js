@@ -1,73 +1,30 @@
-const fs=  require("fs");
-const path = require('path');
-const webpack= require("webpack");
-
-const prefix=  fs.existsSync("./src/solved-utilities.js")?"solved-":"";
-
-// we will make a webpack entry out of every tw/tw*.js file
-const tws= fs.readdirSync("./tw").filter(function(file){return path.parse(file).ext===".js" && path.parse(file).name.startsWith("tw");});
-
-function makeEntryCB(acc, file){   // reducer for making a large object. entry  below needs to be an object
-    return { ... acc, [path.parse(file).name]: './tw/'+file};     // we ... spread the current object, then add one more property
-}
-
-// make a HTML path for each TW entry. For example tw1.2.js will result in http://localhost:8080/tw1.2.html
-// all such entries are based on a single HTML template /src/index.html
-function makeHtmlCB(file){
-    return new HtmlWebpackPlugin({
-        filename: path.parse(file).name+".html",
-        template: './src/'+prefix+'index.html',
-        chunks: [path.parse(file).name],
-    });
-}
-
-// bootstrap entries
-const bootstrap= ["vuejs", "reactjs"]
-      .map(function framework2PathCB(x){return {[x] :"./src/"+x+"/"+prefix+"index.js"}; })   // find file path and return {frameworkJS: path}
-      .filter(function keepOnlyExistingCB(f){ return fs.existsSync(Object.values(f)[0]);})   // include only if file (path) exists
-      .reduce(function mergeObjectsCB(acc, f){ return {...acc, ...f};}, {});                 // merge objects into one  {framework1JS:path1, f2: path2}
-
-function makeBootrapHtmlCB(framework){     // framework bootstrap is at framework/index.html
-    return new HtmlWebpackPlugin({
-        filename: framework.slice(0, -2)+"/index.html",
-        template: './src/'+prefix+'index.html',
-        chunks: [framework],
-    });
-}
-
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: tws.reduce(makeEntryCB, {...bootstrap, test:"./test/index.js"}),   // all tw entries, plus the tests
+    entry: { 
+        vuejs: './src/vuejs/index.js'
+    },
     output: {
         path: __dirname +"/public",
         publicPath: '/',
     },
     optimization: {
-        splitChunks: {             // split the code coming from others (vendor) from our own code
+        splitChunks: {
             chunks: "all",
         },
     },
     plugins: [
-        ...tws.map(makeHtmlCB),    // a HTML for each TW entry, map() produces an array, which we spread ...
-        ...Object.keys(bootstrap).map(makeBootrapHtmlCB),   // a HTML for each existing bootstrap index.js
-        
-        new HtmlWebpackPlugin({    // the test.html for tests, see the test entry above
-            filename: "test.html",
-            template: './test/'+prefix+'index.html',
-            chunks: ["test"],
+        new HtmlWebpackPlugin(
+        {
+            filename: "index.html",
+            template: './src/index.html',
+            chunks: ["vuejs"],
         }),
-        new webpack.SourceMapDevToolPlugin(    // the source map plugin, specifying "Debug here!" in the browser Devtools (chrome)
-            {
-                moduleFilenameTemplate: "[resource]",
-                exclude:[/node_modules/, /webpack/],
-                sourceRoot:"Debug here!"
-            }),
-        new webpack.DefinePlugin({           // globals neeeded by Vue
+        new webpack.DefinePlugin(
+        {
             __VUE_OPTIONS_API__:true,
             __VUE_PROD_DEVTOOLS__:true,
-            TEST_PREFIX:"\'"+prefix+"\'"
-//            TEST_PREFIX: "\'\'"
         })      
     ],
     module: {
