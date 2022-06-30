@@ -1,4 +1,4 @@
-const knownTypes=[                    
+const drinkCategories=[                    
     "Ordinary Drink", 
     "Cocktail", 
     "Shake",
@@ -13,10 +13,10 @@ const knownTypes=[
 ];
 
 function compareDrinkTypeCB(drinkA, drinkB){
-    if (knownTypes.indexOf(drinkA.strCategory) < knownTypes.indexOf(drinkB.strCategory)) {
+    if (drinkCategories.indexOf(drinkA.strCategory) < drinkCategories.indexOf(drinkB.strCategory)) {
         return -1
     }
-    else if (knownTypes.indexOf(drinkA.strCategory) > knownTypes.indexOf(drinkB.strCategory)) {
+    else if (drinkCategories.indexOf(drinkA.strCategory) > drinkCategories.indexOf(drinkB.strCategory)) {
         return 1
     } else {
         return 0
