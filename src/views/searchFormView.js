@@ -20,15 +20,12 @@ function SearchFormView(props) {
     }
 
     return (
-        <div class="searchForm">
-            <input type="text" placeholder="Search..." class="searchTextField" onChange={onInputChangeACB}></input>
-            <select class="searchButtons" name="drinkTypesOptions" onChange={onSelectChangeACB}>
-                <option value="">Choose:</option>
-                {props.drinkTypeOptions.map(drinkTypeOptionsCB)}
-            </select>
-            <button class="searchButtons" onClick={onClickSearchButtonACB}>Search!</button>
-            <button class="searchButtons" onClick={onClickSummaryButtonACB}>Summary</button>
-        </div>
+        <form class="search-form">
+            <input type="text" placeholder="Search..." class="search-box" onChange={onInputChangeACB}></input>
+            <input type="submit" class="search-submit-btn">
+                <i class="fa fa-search"></i>
+            </input>
+        </form>
     )
 }
 

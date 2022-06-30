@@ -2,7 +2,7 @@ import {sortIngredients} from "../utilities.js";
 
 function SummaryView(props){
     function onClickBackToSearchACB(event){
-        window.location.hash = "#search";
+        window.location.hash = "#home";
     }
 
     return (
@@ -35,10 +35,9 @@ function renderIngredients(ingredientArray, people){
         </tr>
         </thead>
         <tbody>
-
         {
             sortIngredients(ingredientArray).map(ingredientTableRowCB)
-        }
+        }3
 
         </tbody>
         </table>;

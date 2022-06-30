@@ -4,7 +4,7 @@ import promiseNoData from "../views/promiseNoData.js";
 import resolvePromise from "../resolvePromise";
 import { searchDrinks } from "../drinkSource";
 
-const Search={
+const Home={
     props: ["model"],
     data(){ return { 
         searchType:"", 
@@ -54,13 +54,24 @@ const Search={
                 onClickSearchButton={onClickSearchButtonACB} 
                 onSelectChange={onSelectChangeACB} 
                 onInputChange={onInputChangeACB}/>
-            {promiseNoData(component.searchResultsPromiseState) || 
-            <SearchResultsView 
-                searchResults={component.searchResultsPromiseState.data} 
-                onClickedResult={onClickedResultACB}/>}
+                <div class="heading">
+                <div class="welcome-text">
+                    Welcome to PocketCocktail!
+                </div>
+            </div>
+            <div class="favorites-list">
+                <div class="favs-heading">
+                    ⭐️ Saved drinks:
+                </div>
+                <ul class="fav-ul">
+                    <a href="#"><li>Mojito</li></a>
+                    <a href="#"><li>Mojito</li></a>
+                    <a href="#"><li>Mojito</li></a>
+                </ul>
+            </div>
         </div>
     },
 };
     
 
-export default Search;
+export default Home;

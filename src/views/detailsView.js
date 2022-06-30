@@ -17,11 +17,11 @@ function DetailsView(props) {
 
     function addToMenuACB(event) {
         props.onAddToMenu()
-        window.location.hash = "#search";
+        window.location.hash = "#home";
     }
 
     function onCancelButtonClickACB(event) {
-        window.location.hash = "#search";
+        window.location.hash = "#home";
     }
     let ingredient_names = [];
     let ingredient_amounts = [];
