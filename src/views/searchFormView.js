@@ -1,5 +1,5 @@
 function SearchFormView(props) {
-    function drinkTypeOptionsCB(drinkOption) {
+    function searchOptionsCB(drinkOption) {
         return <option value={drinkOption}>{drinkOption}</option>
     }
 
@@ -22,7 +22,10 @@ function SearchFormView(props) {
     return (
         <form class="search-form">
             <input type="text" placeholder="Search..." class="search-box" onChange={onInputChangeACB}></input>
-            <input type="submit" class="search-submit-btn">
+            <select class="searchButtons" name="searchOptions" onChange={onSelectChangeACB}>
+                {props.searchOptions.map(searchOptionsCB)}
+            </select>
+            <input type="submit" class="search-submit-btn" onClick={onClickSearchButtonACB}>
                 <i class="fa fa-search"></i>
             </input>
         </form>

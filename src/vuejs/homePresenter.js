@@ -7,7 +7,7 @@ import { searchDrinks } from "../drinkSource";
 const Home={
     props: ["model"],
     data(){ return { 
-        searchType:"", 
+        searchType:"search.php?s=", 
         searchQuery:"", 
         searchResultsPromiseState: {},
         };
@@ -24,7 +24,15 @@ const Home={
         }
     
         function onSelectChangeACB(searchTypeInput) {
-            component.searchType = searchTypeInput;
+            if(searchTypeInput == "Drink name") {
+                component.searchType = "search.php?s="
+            }
+            else if (searchTypeInput == "Ingredient") {
+                component.searchType = "filter.php?i="
+            }
+            else(
+                component.searchType = "s="
+            )
         }
     
         function onInputChangeACB(searchQueryInput) {
@@ -38,18 +46,9 @@ const Home={
     
         return <div>
             <SearchFormView
-                drinkTypeOptions={[
-                    "Ordinary Drink", 
-                    "Cocktail", 
-                    "Shake",
-                    "Other/Unknown",
-                    "Cocoa",
-                    "Shot",
-                    "Coffee / Tea",
-                    "Homemade Liqueur",
-                    "Punch / Party Drink",
-                    "Beer",
-                    "Soft Drink"
+                searchOptions={[
+                    "Drink name",
+                    "Ingredient"
                 ]} 
                 onClickSearchButton={onClickSearchButtonACB} 
                 onSelectChange={onSelectChangeACB} 

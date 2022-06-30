@@ -25,7 +25,7 @@ function getDrinkDetails(params) {
 function searchDrinks(params) {
     let searchParams = new URLSearchParams(params);
     return fetch(
-        BASE_URL+"search.php?s="+searchParams.get("query").toString(), 
+        BASE_URL+searchParams.get("type").toString()+searchParams.get("query").toString(), 
         {
             "method": "GET",
             "headers": {},
