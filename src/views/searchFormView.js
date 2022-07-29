@@ -20,7 +20,7 @@ function SearchFormView(props) {
     }
 
     return (
-        <form class="search-form">
+        <form class="search-form" onSubmit={(event) => event.preventDefault()}>
             <input type="text" placeholder="Search..." class="search-box" onChange={onInputChangeACB}></input>
             <select class="searchButtons" name="searchOptions" onChange={onSelectChangeACB}>
                 {props.searchOptions.map(searchOptionsCB)}
