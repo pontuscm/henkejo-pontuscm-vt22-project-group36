@@ -4,15 +4,27 @@ import promiseNoData from "../views/promiseNoData.js";
 import resolvePromise from "../resolvePromise";
 import { searchDrinks } from "../drinkSource";
 
-const Home={
+const Search={
     props: ["model"],
-    data(){return {
-    }},
+    data(){ return {
+        };
+    },
+    created(){
+        const component=this;
+    },
     render(){
         const component=this;
+    
         return <div>
-            <SearchFormView/>
-            <div class="heading">
+            <SearchFormView
+                searchOptions={[
+                    "Drink name",
+                    "Ingredient"
+                ]} 
+                onClickSearchButton={onClickSearchButtonACB} 
+                onSelectChange={onSelectChangeACB} 
+                onInputChange={onInputChangeACB}/>
+                <div class="heading">
                 <div class="welcome-text">
                     Welcome to PocketCocktail!
                 </div>
@@ -32,4 +44,4 @@ const Home={
 };
     
 
-export default Home;
+export default Search;
