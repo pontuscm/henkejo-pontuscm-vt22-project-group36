@@ -18,14 +18,14 @@ const SearchResultsView={
             </span>
         }
         try {
-            this.searchResults.drinks.map(renderSearchResultCB)
+            this.model.searchResultsPromiseState.data.drinks.map(renderSearchResultCB)
         } catch (e){
             
         }
         return (
             <div>
                 {
-                this.searchResults.drinks.map(renderSearchResultCB)
+                this.model.searchResultsPromiseState.data.drinks.map(renderSearchResultCB)
                 }
             </div>
         );

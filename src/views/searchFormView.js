@@ -41,7 +41,11 @@ const SearchForm = {
         }
 
         function onSearchDoneACB(payload) {
-            console.log(component.model.searchResultsPromiseState);
+            if (component.model.searchResultsPromiseState.data) {
+                window.location.hash = "search";
+            } else {
+                console.log(component.model.searchResultsPromiseState.error);
+            }
         }
         
         function onSelectChangeACB(searchTypeInput) {
