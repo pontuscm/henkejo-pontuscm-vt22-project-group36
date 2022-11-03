@@ -31,14 +31,10 @@ const SearchForm = {
                 component.searchType = "drink"
                 )
             }
-            
-        function onClickSearchButtonACB(event) {
-            props.onClickSearchButton();
-        }
         
         function onClickSearchButtonACB() {
-            resolvePromise(searchDrinks({type: component.searchType, query: component.searchQuery}), component.searchResultsPromiseState);
-            window.location.hash = "search";
+            resolvePromise(searchDrinks({type: component.searchType, query: component.searchQuery}), component.searchResultsPromiseState,
+            () => {window.location.hash = "search"});
         }
         
         function onSelectChangeACB(searchTypeInput) {

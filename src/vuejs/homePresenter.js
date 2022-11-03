@@ -2,7 +2,6 @@ import SearchFormView from "../views/searchFormView";
 import SearchResultsView from "../views/searchResultsView";
 import promiseNoData from "../views/promiseNoData.js";
 import resolvePromise from "../resolvePromise";
-import { searchDrinks } from "../drinkSource";
 
 const Home={
     props: ["model"],
