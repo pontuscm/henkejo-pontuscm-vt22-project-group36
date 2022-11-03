@@ -1,4 +1,4 @@
-import { BASE_URL,API_KEY } from "./apiConfig";
+import { BASE_URL, API_KEY } from "./apiConfig";
 
 function treatHTTPResponseACB(response){
     if(response.status !== 200) {
@@ -24,8 +24,12 @@ function getDrinkDetails(params) {
 
 function searchDrinks(params) {
     let searchParams = new URLSearchParams(params);
+    let searchType = searchParams.get("type").toString() == "drink"
+                      ? "search.php?s=" : "filter.php?i=";
     return fetch(
-        BASE_URL+searchParams.get("type").toString()+searchParams.get("query").toString(), 
+        BASE_URL+
+        searchType+
+        searchParams.get("query").toString(), 
         {
             "method": "GET",
             "headers": {},

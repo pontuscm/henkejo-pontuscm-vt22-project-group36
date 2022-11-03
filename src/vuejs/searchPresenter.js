@@ -12,9 +12,8 @@ const Search={
         }
 
         return <div>
-            <SearchFormView/>
             <SearchResultsView 
-                searchResults={this.model.searchResultsPromiseState.data}
+                model={this.model}
                 onClickedResult={onClickedResultACB}/>
         </div>
     },

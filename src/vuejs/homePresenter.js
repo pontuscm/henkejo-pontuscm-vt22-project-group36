@@ -10,7 +10,6 @@ const Home={
     render(){
         const component=this;
         return <div>
-            <SearchFormView/>
             <div class="heading">
                 <div class="welcome-text">
                     Welcome to PocketCocktail!

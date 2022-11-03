@@ -1,6 +1,12 @@
 const SearchResultsView={
     props: ["model"],
+    data(){return {
+    }},
     render(){
+        const component=this;
+        if (this.model.searchResultsPromiseState === undefined) {
+            return {}
+        }
         function renderSearchResultCB(searchResult) {
             function onClickedResultACB() {
                 props.onClickedResult(searchResult)

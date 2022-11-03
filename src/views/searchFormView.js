@@ -2,7 +2,7 @@ import resolvePromise from "../resolvePromise";
 import { searchDrinks } from "../drinkSource";
 
 const SearchForm = {
-    props: [],
+    props: ['model'],
     data(){return {
         searchOptions:["Drink name", "Ingredient"],
         searchType:"drink",
@@ -11,13 +11,13 @@ const SearchForm = {
         };
     },
     created(){
-        const component=this; 
-        lifecycle: resolvePromise(searchDrinks({type: component.searchType, query: component.searchQuery}), component.searchResultsPromiseState);
+        const component=this;
     },
     render(){
         const component=this;
-        function onInputChangeACB(event) {
-            component.searchQuery = searchQueryInput;
+
+        function onInputChangeACB(searchQueryInput) {
+            component.searchQuery = searchQueryInput.target.value;
         }
         
         function onSelectChangeACB(event) {
@@ -30,11 +30,18 @@ const SearchForm = {
             else(
                 component.searchType = "drink"
                 )
-            }
+        }
         
         function onClickSearchButtonACB() {
-            resolvePromise(searchDrinks({type: component.searchType, query: component.searchQuery}), component.searchResultsPromiseState,
-            () => {window.location.hash = "search"});
+            component.model.addObserver(onSearchDoneACB);
+            component.model.doSearch({
+                type: component.searchType,
+                query: component.searchQuery
+            })
+        }
+
+        function onSearchDoneACB(payload) {
+            console.log(component.model.searchResultsPromiseState);
         }
         
         function onSelectChangeACB(searchTypeInput) {
@@ -47,10 +54,6 @@ const SearchForm = {
             else{
                 component.searchType = "drink"
             }
-        }
-            
-        function onInputChangeACB(searchQueryInput) {
-            component.searchQuery = searchQueryInput;
         }
             
                 
