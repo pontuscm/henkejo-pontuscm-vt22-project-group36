@@ -1,27 +1,36 @@
+import SearchFormView from "../views/searchFormView";
+import SearchResultsView from "../views/searchResultsView";
 import promiseNoData from "../views/promiseNoData.js";
-import DetailsView from "../views/detailsView.js";
+import resolvePromise from "../resolvePromise";
+import DetailsView from "../views/detailsView";
 
-function Details(props) {
+const Home={
+    props: ["model"],
+    data(){return {
+    }},
+    render(){
+        const component = this;
+        function addToMenuACB() {
+            component.model.addToMenu(component.model.currentDrinkPromiseState.data.drinks[0])
+        }
+    
+        function filterOutDrinkCB(drink) {
+            return drink.idDrink === component.model.currentDrinkPromiseState.data.drinks[0].idDrink
+        }
+    
+        function isDrinkInMenuCB() {
+            return component.model.drinkFavorites.find(filterOutDrinkCB) !== undefined
+        }
 
-    function addToMenuACB() {
-        props.model.addToMenu(props.model.currentDrinkPromiseState.data.drinks[0])
-    }
+        return promiseNoData(component.model.currentDrinkPromiseState) || 
+        <DetailsView 
+            drinkData={component.model.currentDrinkPromiseState.data} 
+            isDrinkInMenu={isDrinkInMenuCB()} 
+            guests={component.model.numberOfGuests} 
+            onAddToMenu={addToMenuACB}
+        />;
+    },
+};
+    
 
-    function filterOutDrinkCB(drink) {
-        return drink.idDrink === props.model.currentDrinkPromiseState.data.drinks[0].idDrink
-    }
-
-    function isDrinkInMenuCB() {
-        return props.model.drinkFavorites.find(filterOutDrinkCB) !== undefined
-    }
-
-    return promiseNoData(props.model.currentDrinkPromiseState) || 
-    <DetailsView 
-        drinkData={props.model.currentDrinkPromiseState.data} 
-        isDrinkInMenu={isDrinkInMenuCB()} 
-        guests={props.model.numberOfGuests} 
-        onAddToMenu={addToMenuACB}
-    />;
-}
-
-export default Details;
+export default Home;

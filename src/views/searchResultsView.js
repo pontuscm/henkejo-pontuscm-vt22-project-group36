@@ -4,29 +4,27 @@ const SearchResultsView={
     }},
     render(){
         const component=this;
-        if (this.model.searchResultsPromiseState === undefined) {
-            return {}
-        }
         function renderSearchResultCB(searchResult) {
             function onClickedResultACB() {
-                props.onClickedResult(searchResult)
+                component.model.addObserver(onDetailsFetchedACB);
+                component.model.setCurrentDrink(searchResult.idDrink);
+            }
+            function onDetailsFetchedACB() {
                 window.location.hash="#details";
+                component.model.removeObserver(onDetailsFetchedACB);
             }
             return <span onClick={onClickedResultACB} class="searchResult">
-                <div>{searchResult.strDrink}</div>
-                <img src={searchResult.strDrinkThumb + "/preview"} height="100"></img>
+                <p><a href="javascript:void(0);">{searchResult.strDrink}</a></p>
             </span>
-        }
-        try {
-            this.model.searchResultsPromiseState.data.drinks.map(renderSearchResultCB)
-        } catch (e){
-            
         }
         return (
             <div>
+                <h3 class="results-title">Search results:</h3>
+                <ul class="search-results">
                 {
                 this.model.searchResultsPromiseState.data.drinks.map(renderSearchResultCB)
                 }
+                </ul>
             </div>
         );
     }

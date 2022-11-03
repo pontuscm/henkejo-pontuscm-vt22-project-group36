@@ -43,6 +43,7 @@ const SearchForm = {
         function onSearchDoneACB(payload) {
             if (component.model.searchResultsPromiseState.data) {
                 window.location.hash = "search";
+                component.model.removeObserver(onSearchDoneACB)
             } else {
                 console.log(component.model.searchResultsPromiseState.error);
             }
