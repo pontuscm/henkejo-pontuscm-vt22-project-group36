@@ -68,12 +68,10 @@ const SearchForm = {
         return (
             <form class="search-form" onSubmit={(event) => event.preventDefault()}>
                 <input type="text" placeholder="Search..." class="search-box" onChange={onInputChangeACB}></input>
-                <select class="searchButtons" name="searchOptions" onChange={onSelectChangeACB}>
-                    {component.searchOptions.map(searchOptionsCB)}
-                </select>
-                <input type="submit" class="search-submit-btn" onClick={onClickSearchButtonACB}>
+                <button type="submit" class="search-submit-btn" onClick={onClickSearchButtonACB}>
+                    🔍
                     <i class="fa fa-search"></i>
-                </input>
+                </button>
             </form>
         )
     }

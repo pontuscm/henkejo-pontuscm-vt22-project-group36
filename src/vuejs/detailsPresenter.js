@@ -1,7 +1,4 @@
-import SearchFormView from "../views/searchFormView";
-import SearchResultsView from "../views/searchResultsView";
 import promiseNoData from "../views/promiseNoData.js";
-import resolvePromise from "../resolvePromise";
 import DetailsView from "../views/detailsView";
 
 const Home={
@@ -12,6 +9,10 @@ const Home={
         const component = this;
         function addToMenuACB() {
             component.model.addToMenu(component.model.currentDrinkPromiseState.data.drinks[0])
+        }
+
+        function removeFromMenuACB() {
+            component.model.removeFromMenu(component.model.currentDrinkPromiseState.data.drinks[0])
         }
     
         function filterOutDrinkCB(drink) {
@@ -28,6 +29,7 @@ const Home={
             isDrinkInMenu={isDrinkInMenuCB()} 
             guests={component.model.numberOfGuests} 
             onAddToMenu={addToMenuACB}
+            onRemoveFromMenu={removeFromMenuACB}
         />;
     },
 };

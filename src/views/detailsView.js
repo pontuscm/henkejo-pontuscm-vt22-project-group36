@@ -1,5 +1,5 @@
 const SearchResultsView={
-    props: ["drinkData", "isDrinkInMenu", "guests", "onAddToMenu"],
+    props: ["drinkData", "isDrinkInMenu", "guests", "onAddToMenu", "onRemoveFromMenu"],
     data(){return {
     }},
     render(){
@@ -19,8 +19,12 @@ const SearchResultsView={
             </tr>
         }
     
-        function addToMenuACB(event) {
+        function addToMenuACB() {
             component.onAddToMenu()
+        }
+
+        function removeFromMenuACB() {
+            component.onRemoveFromMenu()
         }
     
         let ingredient_names = [];
@@ -44,14 +48,27 @@ const SearchResultsView={
                 ingredients_list[element] = ingredient_amounts[index];
             }
         });
-    
+
+        function favButtonRenderACB() {
+            if (component.isDrinkInMenu) {
+                return <a href="javascript:void(0);" class="addToMenuButton"
+                disabled={component.isDrinkInMenu} onClick={removeFromMenuACB}>
+                    <img class="details-star" src="star_on.png"></img>
+                </a>
+            }else{
+                return <a href="javascript:void(0);" class="addToMenuButton"
+                disabled={component.isDrinkInMenu} onClick={addToMenuACB}>
+                    <img class="details-star" src="star_off.png"></img>
+                </a>
+            }
+        }
         return (
             <div class="detailsView">
-                <h2 class="detailsViewTitle">{component.drinkData.drinks[0].strDrink}</h2>
-                <button class="addToMenuButton" disabled={component.isDrinkInMenu} onClick={addToMenuACB}>Add to favorites!</button>
-                {renderImageAndPriceCB(component)}
-                <div class="detailsViewInstructions">
-                    {component.drinkData.drinks[0].strAlcoholic}
+                <div class="title-row">
+                    <h2 class="detailsViewTitle">{component.drinkData.drinks[0].strDrink}</h2>
+                    {
+                        favButtonRenderACB()
+                    }
                 </div>
                 <div class="detailsViewIngredients">
                     <div>
