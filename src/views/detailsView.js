@@ -32,17 +32,15 @@ const SearchResultsView={
         for (let [key, value] of Object.entries(component.drinkData.drinks[0])) {
             if (key.startsWith("strIngredient") && value != null) {
                 ingredient_names[key[13] - 1] = value;
-                //console.log(value);
             }
             if (key.startsWith("strMeasure") && value != null) {
                 ingredient_amounts[key[10] - 1] = value;
-                //console.log(value);
             }
         }
         const ingredients_list = {};
         ingredient_names.forEach((element, index) => {
             if (ingredient_amounts[index] == null) {
-                ingredients_list[element] = "n/a";
+                ingredients_list[element] = "";
             }
             else {
                 ingredients_list[element] = ingredient_amounts[index];
@@ -70,28 +68,28 @@ const SearchResultsView={
                         favButtonRenderACB()
                     }
                 </div>
-                <div class="detailsViewIngredients">
-                    <div>
+                <div>
+                    <div class="details-subtitle">
                         Ingredients:
                     </div>
                     <table>
                         {Object.entries(ingredients_list).map(renderIngredientsCB)}
                     </table>
                 </div>
-                <div class="detailsViewInstructions">
-                    <div>
+                <div>
+                    <div class="details-subtitle">
                         Category:
                     </div>
                     {component.drinkData.drinks[0].strCategory}
                 </div>
-                <div class="detailsViewInstructions">
-                    <div>
+                <div>
+                    <div class="details-subtitle">
                         Glass type:
                     </div>
                     {component.drinkData.drinks[0].strGlass}
                 </div>
-                <div class="detailsViewInstructions">
-                    <div>
+                <div>
+                    <div class="details-subtitle">
                         Instructions:
                     </div>
                     {component.drinkData.drinks[0].strInstructions}

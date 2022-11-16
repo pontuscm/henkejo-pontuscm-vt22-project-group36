@@ -100,7 +100,7 @@ li {
 }
 
 .results-title {
-    margin: 10px 0;
+    margin: 20px 0 10px;
 }
 
 .search-results {
@@ -114,11 +114,14 @@ li {
     color: black;
     text-decoration: none;
     font-weight: bold;
-}
-
-.detailsViewTitle {
     flex-grow: 0;
     margin-right: 20px;
+}
+
+.details-subtitle {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .title-row {
