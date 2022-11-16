@@ -5,10 +5,28 @@ import resolvePromise from "../resolvePromise";
 
 const Home={
     props: ["model"],
-    data(){return {
-    }},
+    data(){
+        return {
+            favorites: []
+        }
+    },
     render(){
         const component=this;
+
+        function renderFavDrinkCB(drink) {
+            function onFavClickedACB() {
+                component.model.addObserver(onDetailsFetchedACB);
+                component.model.setCurrentDrink(drink.idDrink);
+            }
+            function onDetailsFetchedACB() {
+                window.location.hash="#details";
+                component.model.removeObserver(onDetailsFetchedACB);
+            }
+            return <a href="javascript:void(0);" onClick={onFavClickedACB} class="searchResult"><li>
+                {drink.strDrink}
+            </li></a>
+        }
+
         return <div>
             <div class="heading">
                 <div class="welcome-text">
@@ -20,9 +38,7 @@ const Home={
                     ⭐️ Saved drinks:
                 </div>
                 <ul class="fav-ul">
-                    <a href="#"><li>Mojito</li></a>
-                    <a href="#"><li>Mojito</li></a>
-                    <a href="#"><li>Mojito</li></a>
+                    {component.model.drinkFavorites.map(renderFavDrinkCB)}
                 </ul>
             </div>
         </div>
