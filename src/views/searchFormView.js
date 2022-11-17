@@ -10,26 +10,11 @@ const SearchForm = {
         searchResultsPromiseState: {},
         };
     },
-    created(){
-        const component=this;
-    },
     render(){
         const component=this;
 
         function onInputChangeACB(searchQueryInput) {
             component.searchQuery = searchQueryInput.target.value;
-        }
-        
-        function onSelectChangeACB(event) {
-            if(searchTypeInput == "Drink name") {
-                component.searchType = "drink"
-            }
-            else if (searchTypeInput == "Ingredient") {
-                component.searchType = "ingredient"
-            }
-            else(
-                component.searchType = "drink"
-                )
         }
         
         function onClickSearchButtonACB() {
@@ -40,7 +25,7 @@ const SearchForm = {
             })
         }
 
-        function onSearchDoneACB(payload) {
+        function onSearchDoneACB() {
             if (component.model.searchResultsPromiseState.data) {
                 window.location.hash = "search";
                 component.model.removeObserver(onSearchDoneACB)
@@ -49,22 +34,6 @@ const SearchForm = {
             }
         }
         
-        function onSelectChangeACB(searchTypeInput) {
-            if(searchTypeInput == "Drink name") {
-                component.searchType = "drink"
-            }
-            else if (searchTypeInput == "Ingredient") {
-                component.searchType = "ingredient"
-            }
-            else{
-                component.searchType = "drink"
-            }
-        }
-            
-                
-        function searchOptionsCB(drinkOption) {
-            return <option value={drinkOption}>{drinkOption}</option>
-        }
         return (
             <form class="search-form" onSubmit={(event) => event.preventDefault()}>
                 <input type="text" placeholder="Search..." class="search-box" onChange={onInputChangeACB}></input>
