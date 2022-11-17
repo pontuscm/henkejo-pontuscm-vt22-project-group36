@@ -1,4 +1,3 @@
-import SearchFormView from "../views/searchFormView";
 import SearchResultsView from "../views/searchResultsView";
 
 const Search={

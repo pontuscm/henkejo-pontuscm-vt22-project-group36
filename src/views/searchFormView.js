@@ -1,6 +1,3 @@
-import resolvePromise from "../resolvePromise";
-import { searchDrinks } from "../drinkSource";
-
 const SearchForm = {
     props: ['model'],
     data(){return {

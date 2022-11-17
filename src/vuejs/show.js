@@ -1,4 +1,3 @@
-
 const Show={
     props:["hash"],
     data(){ 

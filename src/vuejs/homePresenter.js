@@ -1,8 +1,3 @@
-import SearchFormView from "../views/searchFormView";
-import SearchResultsView from "../views/searchResultsView";
-import promiseNoData from "../views/promiseNoData.js";
-import resolvePromise from "../resolvePromise";
-
 const Home={
     props: ["model"],
     data(){

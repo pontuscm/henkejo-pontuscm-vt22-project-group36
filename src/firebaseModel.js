@@ -1,6 +1,5 @@
 import firebaseConfig from "/src/firebaseConfig.js";
 import { getDrinkDetails, searchDrinks } from "./drinkSource";
-import resolvePromise from "./resolvePromise";
 import DrinksModel from "./DrinksModel";
 
 firebase.initializeApp(firebaseConfig);
