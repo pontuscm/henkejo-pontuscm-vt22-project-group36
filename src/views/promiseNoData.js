@@ -13,7 +13,7 @@ function promiseNoData(promiseState) {
     }
 
     return <div>
-        {promiseNoData(promiseState) || // props.model.searchPromiseState
+        {promiseNoData(promiseState) ||
             <span searchResults={promiseState.data}/>}
     </div>
 }

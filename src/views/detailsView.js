@@ -4,12 +4,8 @@ const SearchResultsView={
     }},
     render(){
         const component = this;
-        function renderImageAndPriceCB() {
-            return <div class="detailsViewImageAndPrice">
-                <span>
-                    <img class="detailsViewImage" src={component.drinkData.drinks[0].strDrinkThumb + "/preview"}></img>
-                </span>
-            </div>
+        function renderImageCB() {
+            return <img class="details-view-image" src={component.drinkData.drinks[0].strDrinkThumb + "/preview"}></img>
         }
     
         function renderIngredientsCB(ingredient) {
@@ -67,6 +63,9 @@ const SearchResultsView={
                     {
                         favButtonRenderACB()
                     }
+                </div>
+                <div class="details-image">
+                    {renderImageCB()}
                 </div>
                 <div>
                     <div class="details-subtitle">
