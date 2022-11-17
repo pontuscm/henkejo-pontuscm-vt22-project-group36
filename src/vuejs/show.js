@@ -17,7 +17,11 @@ const Show={
     },
     render(){
         const component = this;
-        return <div class={component.hash == component.hashState ? "" : "hidden"}>{this.$slots.default()}</div>
+        if (component.hash == component.hashState) {
+            return <div class="">{this.$slots.default()}</div>
+        } else {
+            return <div></div>
+        }
     },
 };
 

@@ -1,7 +1,7 @@
 function resolvePromise(promise, promiseState, notifyACB) {
     if(promise === null) return TypeError("promise is null");
     promiseState.promise = promise;
-    promiseState.data = null;         
+    promiseState.data = null;
     promiseState.error = null;
     if(notifyACB) notifyACB();    // notify every time promise, data, or error change
     function saveDataACB(result){ 

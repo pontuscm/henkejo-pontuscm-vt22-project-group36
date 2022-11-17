@@ -5,3 +5,5 @@ package-lock.json
 **/*solved*
 /public/*.js
 /public/*.html
+.DS_Store
+.DS_Store

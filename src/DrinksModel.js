@@ -47,7 +47,10 @@ class DrinksModel {
     }
 
     doSearch(searchParams) {
-        resolvePromise(searchDrinks(searchParams), this.searchResultsPromiseState, this.notifyObservers.bind(this));
+        resolvePromise(
+            searchDrinks(searchParams),
+            this.searchResultsPromiseState,
+            this.notifyObservers.bind(this));
     }
 
     setNumberOfGuests(nr) {
