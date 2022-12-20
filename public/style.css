@@ -1,218 +1,168 @@
-/* A debug class, used to separate components graphically during development */
-.debug {
-    border-style:   solid;
-    margin:         3px;
-    max-width:      fit-content;
-    padding:        3px;
+body {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.mainContent {
-    display:        flex;
+a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.main-view {
+    display: flex;
+    flex-direction: column;
+    
+    width: 360px;
+}
+
+.home-icon {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.home-icon-title {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    margin-top: 4px;
+    margin-left: 10px;
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    margin-top: 1px;
+    
+}
+
+.search-form {
+    display:flex;
+}
+
+.search-box {
+    font-size: 24px;
+    flex-grow: 10;
+}
+
+.search-submit-btn {
+    
+}
+
+.heading {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.drink-img {
+    width: 100%;
+}
+
+.welcome-text {
+    font-size: 34px;
+}
+
+.favorites-list {
+    margin-top: 30px;
+    width: 200px;
+    justify-content: center;
+}
+
+.instructions {
+    margin-top: 15px;
+}
+
+.recipe-title {
+    font-size: 38px;
+}
+
+.instr-title {
+    margin-top: 10px;
+}
+
+.ingr-title {
+    margin-top: 30px;
+}
+
+.favorites-list {
+    margin-top: 30px;
+    width: 200px;
+    justify-content: center;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.fav-ul {
+    margin: 10px;
+    padding-left: 18px;
+    list-style-type: none;
+}
+
+.ingr-ul {
+    margin: 10px;
+    padding-left: 18px;
+    list-style-type: '- ';
 }
 
 .hidden {
-    display:        none;
+    display: none;
 }
 
-.textAlignRight {
-    text-align:     right;
+.results-title {
+    margin: 10px 0 10px;
 }
 
-.flexParent {
-    display:        flex;
-}
-
-.sidebar {
-    display:        block;
-    white-space:    nowrap;
-    border-style:   solid;
-    margin:         3px;
-    padding:        3px;
-}
-
-.tableContainer {
-    display: grid;
-    justify-items: stretch;
-    width: 400px;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: auto;
-    grid-template-areas: 
-      "nrButton nrButton . ."
-      "removeButton dishName dishType dishPrice"
-      "totalText . . totalPrice";
-}
-
-.sidebarButton {
-    grid-area:      nrButton;
-    margin:         3px;
-}
-
-.sidebarRemoveDish {
-    grid-area:      removeButton;
-}
-
-.sidebarDishName {
-    grid-area:      dishName;
-    white-space:    normal;
-}
-
-.sidebarDishType {
-    grid-area:      dishType;
-}
-
-.sidebarDishPrice {
-    grid-area:      dishPrice;
-    text-align:     right;
-}
-
-.sidebarSumText {
-    grid-area:      totalText;
-}
-
-.sidebarSumTotal {
-    grid-area:      totalPrice;
-    text-align:     right;
-}
-
-.summary {
-    display:        block;
-    white-space:    nowrap;
-    border-style:   solid;
-    margin:         3px;
-    padding:        3px;
-    width:          fit-content;
-}
-
-.summaryName {
-    text-align:     left;
-}
-
-.summaryAisle {
-    text-align:     left;
-}
-
-.summaryQuantity {
-    text-align:     right;
-}
-
-.summaryUnit {
-    text-align:     left;
-}
-
-@media only screen and (max-width: 600px) {
-    .flexParent {
-        display:    block;
-        width:      min-content;
-    }
-
-    .summary {
-        display:        block;
-        white-space:    normal;
-        border-style:   solid;
-        margin:         3px;
-        padding:        3px;
-        width:          415px;
-    }
-}
-
-.searchForm {
-    border-style:   solid;
-    margin:         3px;
-    max-width:      fit-content;
-    padding:        3px;
-}
-
-.searchTextField {
-    margin:         3px;
-    padding:        3px;
-    width:          157px;
-}
-
-.searchButtons {
-    margin:         3px;
-    padding:        3px;
-}
-
-.searchResult {
-    text-align:     left;
-    display: inline-grid;
-    grid-template-columns: repeat(auto-fill, 200px);
-    vertical-align: top;
-    border-style:   solid;
-    border-color: black;
-    margin:         3px;
-    padding:        3px;
-}
-
-.detailsView {
-    border-style:   solid;
-    height:         min-content;
-    padding:        3px;
-    margin:         3px;
-    padding-bottom: 10px;
-}
-
-.addToMenuButton {
-    margin:         5px;
+.search-results {
+    margin: 0px;
+    list-style-type: "none";
 }
 
 .detailsViewTitle {
-    font-size:      large;
-    font-weight:    bold;
-    margin:         5px;
-    padding-bottom: 5px;
+    margin: 10px 0;
+    list-style-type: "none";
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    flex-grow: 0;
+    margin-right: 20px;
 }
 
-.detailsViewImageAndPrice {
-    display:        flex;
-    height:         min-content;
-    margin:         5px;
-    margin-bottom:  10px;
-    padding:        0px;
+.details-subtitle {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-.detailsViewImage {
-    margin-right:   5px;
-    padding:        0px;
-    outline:        1px solid black;
+.title-row {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
 }
 
-.detailsViewPrice {
-    margin-left:    10px;
-    padding:        5px;
-    outline:        1px solid black;
-    height:         min-content;
-    vertical-align: text-top;
-    width:          auto;
+.details-star {
+    width: 50px;
 }
 
-.detailsViewIngredients {
-    margin:         5px;
-    margin-bottom:  15px;
-    padding:        5px;
-    outline:        1px solid black;
-    height:         min-content;
+.details-image {
+    display: flex;
+    margin-top: 20px;
 }
 
-.detailsViewIngredientName{
-    width: 80%;
-}
-
-.detailsViewIngredientAmount{
-    text-align: right;
-}
-
-.detailsViewInstructions {
-    margin:         5px;
-    margin-top:     10px;
-    margin-bottom:  10px;
-    padding:        10px;
-    outline:        1px solid black;
-    height:         min-content;
-}
-
-.detailsViewLink {
-    margin:         5px;
-    padding-left:   10px;
-    padding-bottom: 10px;
+.details-view-image {
+    width: 100%;
 }

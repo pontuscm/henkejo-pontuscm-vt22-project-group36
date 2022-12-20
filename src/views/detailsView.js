@@ -63,6 +63,9 @@ const SearchResultsView={
                     {
                         favButtonRenderACB()
                     }
+                    <a href="/index.html#home"><img class="home-icon-title" src="home_icon.png" width="46" height="46"></img></a>
+                <div>
+            </div>
                 </div>
                 <div class="details-image">
                     {renderImageCB()}

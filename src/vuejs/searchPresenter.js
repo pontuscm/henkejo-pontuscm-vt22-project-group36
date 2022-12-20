@@ -11,6 +11,9 @@ const Search={
         }
 
         return <div>
+            <div class="home-icon">
+                <a href="/index.html#home"><img src="home_icon.png" width="30" height="30"></img></a>
+            </div>
             <SearchResultsView 
                 model={this.model}
                 onClickedResult={onClickedResultACB}/>
